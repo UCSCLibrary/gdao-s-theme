@@ -1,0 +1,48 @@
+/* GDAO S Theme CSS Rules */
+
+
+/* Layout styles */
+
+#content {
+	background-image: url(../img/bg-main.png);
+	background-repeat: repeat;
+}
+
+/* Footer styles */
+
+footer {
+	background-image: url(../img/bg-footer.png);
+	background-repeat: repeat;
+	color: #6d6d6d;
+	line-height: 1.5em;
+}
+
+footer a {
+	color: #878787;
+	background-image: url(../img/line-footer.png);
+	background-position: bottom;
+	background-repeat: repeat-x;
+	display: block;
+	padding: 12px 0px 6px 0px;
+}
+
+footer a:hover {
+	color: #989898;
+}
+
+footer h3 {
+	color: #868686;
+	font-weight: normal;
+	letter-spacing: .05em;
+	text-transform: uppercase;
+	padding: 6px;
+	border: 1px solid #535353;
+	font-size: 13px;
+	margin: 16px 0 6px 0;
+}
+
+footer ul {
+	list-style: none;
+	margin: 0;
+	padding: 16px 0;
+}
