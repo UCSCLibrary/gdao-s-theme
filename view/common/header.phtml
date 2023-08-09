@@ -1,0 +1,29 @@
+<!--Navbar-->
+<nav class="navbar navbar-expand-sm py-0">
+  <div class="container-fluid px-0">
+    <a href="/" class="navbar-brand"><?php echo $site->title(); ?></a>
+    <button class="navbar-toggler me-5" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-primary,#navbar-secondary" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse text-lowercase" id="navbar-primary">
+      <?php echo $site->publicNav()->menu()->setPartial('common/foundation-navigation.phtml')->renderPartialWithParams(['layout' => 'dropdown']); ?>
+    </div>
+    <!-- Collapsible content -->
+  </div>
+</nav>
+<nav class="navbar navbar-expand-sm navbar-gdao">
+  <div class="collapse navbar-collapse me-3 ps-3 justify-content-xl-between justify-content-end" id="navbar-secondary">
+    <ul class="navbar-nav me-md-5 text-uppercase flex-lg-nowrap flex-wrap">
+      <li><a class="nav-link mx-xl-3 mx-1 my-2" href="/shows">Shows</a></li>
+      <li><a class="nav-link mx-xl-3 mx-1 my-2" href="/milestones">Milestones</a></li>
+      <li><a class="nav-link mx-xl-3 mx-1 my-2" href="/artists">Artists</a></li>
+      <li><a class="nav-link mx-xl-3 mx-1 my-2" href="/media">Media</a></li>
+      <li><a class="nav-link mx-xl-3 mx-1 my-2" href="/fan-art">Fan Art</a></li>
+    </ul>
+    <div class="d-flex">
+      <?php echo $this->partial('common/search-form'); ?>
+    </div>
+  </div>
+</nav>
+<!--/.Navbar-->
