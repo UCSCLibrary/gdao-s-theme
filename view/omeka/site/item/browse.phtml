@@ -187,6 +187,7 @@ $bodyTerm = $this->siteSetting('browse_body_property_term');
                     foreach ($bodyHeadings as $bodyHeading) {
                         $bodyTerm = $bodyHeading["value"];
                         $value = $bodyTerm ? $item->value($bodyTerm) : $item->displayDescription();
+                        $value = $value ? $value : "";
                         $value = mb_strimwidth($escape($value), 0, 100, "...");
                         if ($value != "") {
                             if ($body != "") {
