@@ -1,6 +1,7 @@
 <?php
 /*
- * Modified from Omeka Search module, which is Copyright BibLibre, 2016
+ * Copyright BibLibre, 2016
+ * Copyright University of California, Santa Cruz, 2023
  *
  * This software is governed by the CeCILL license under French law and abiding
  * by the rules of distribution of free software.  You can use, modify and/ or
@@ -32,27 +33,29 @@
 <<?php echo $tag; ?> class="<?php echo $resource->resourceName(); ?> resource">
     <?php if (method_exists($resource, 'primaryMedia') && $primaryMedia = $resource->primaryMedia()): ?>
         <a href="<?php echo $resource->url() ?>"><img
-            src="<?php echo $escape($primaryMedia->thumbnailUrl('medium')); ?>"
+            src="<?php echo $escape($primaryMedia->thumbnailUrl('square')); ?>"
             title="<?php echo $escape($primaryMedia->displayTitle()); ?>"
             alt="<?php echo $escape($primaryMedia->mediaType()); ?> thumbnail"
         /></a>
     <?php endif; ?>
-    <h4><?php echo $resource->link($resource->displayTitle()); ?>
-        <span class="item-type">(<?php echo $resource->value('dcterms:type'); ?>)</span>
-    </h4>
+    <div class="metadata-set">
+        <h4><?php echo $resource->link($resource->displayTitle()); ?>
+            <span class="item-type">(<?php echo $resource->value('dcterms:type'); ?>)</span>
+        </h4>
 
-    <?php if ($creator = $resource->value('dcterms:creator')): ?>
-        <div class="metadata">
-            <span class="label">Creator:</span>
-            <span class="value"><?php echo $creator ?></span>
-        </div>
-    <?php endif; ?>
+        <?php if ($creator = $resource->value('dcterms:creator')): ?>
+            <div class="metadata">
+                <span class="label">Creator:</span>
+                <span class="value"><?php echo $creator ?></span>
+            </div>
+        <?php endif; ?>
 
-    <?php if ($relatedShow = $resource->value('dcterms:coverage')): ?>
-        <div class="metadata">
-            <span class="label">Related Show:</span>
-            <span class="value"><?php echo $relatedShow ?></span>
-        </div>
-    <?php endif; ?>
+        <?php if ($relatedShow = $resource->value('dcterms:coverage')): ?>
+            <div class="metadata">
+                <span class="label">Related Show:</span>
+                <span class="value"><?php echo $relatedShow ?></span>
+            </div>
+        <?php endif; ?>
+    </div>
 
 </<?php echo $tag ?>>

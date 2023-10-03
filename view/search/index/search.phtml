@@ -78,13 +78,8 @@
                     'site' => $site
                 ]); ?>
 
-                <?php
-                    echo $this->partial('search/results-footer', [
-                        'query' => $query,
-                        'response' => $response,
-                        'sortOptions' => $sortOptions,
-                    ]);
-                ?>
+                <div class="search-results-footer"><?php echo $this->pagination(); ?></div>
+                
             <?php else: ?>
                 <div class="noresults"><?php echo $this->translate('Your search returned no results'); ?></div>
             <?php endif; ?>
