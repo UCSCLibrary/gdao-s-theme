@@ -40,20 +40,24 @@
     <?php endif; ?>
     <div class="metadata-set">
         <h4><?php echo $resource->link($resource->displayTitle()); ?>
-            <span class="item-type">(<?php echo $resource->value('dcterms:type'); ?>)</span>
+            <span class="item-type">(<?php echo $resource->displayResourceTemplateLabel(); ?>)</span>
         </h4>
 
+        <?php $searchUrl = $this->url('search-page-1',[], ['query' => ['q' => '']]); ?>
+
         <?php if ($creator = $resource->value('dcterms:creator')): ?>
+            <?php $creatorUrl = $searchUrl . "&limit[creator][0]=" . $creator->value(); ?>
             <div class="metadata">
                 <span class="label">Creator:</span>
-                <span class="value"><?php echo $creator ?></span>
+                <span class="value"><a href="<?php echo $creatorUrl  ?>"><?php echo $creator ?></a></span>
             </div>
         <?php endif; ?>
 
         <?php if ($relatedShow = $resource->value('dcterms:coverage')): ?>
+            <?php $relatedUrl = $searchUrl . "&limit[coverage][0]=" . $relatedShow->value(); ?>
             <div class="metadata">
                 <span class="label">Related Show:</span>
-                <span class="value"><?php echo $relatedShow ?></span>
+                <span class="value"><a href="<?php echo $relatedUrl  ?>"><?php echo $relatedShow ?></a></span>
             </div>
         <?php endif; ?>
     </div>

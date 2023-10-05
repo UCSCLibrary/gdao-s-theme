@@ -173,6 +173,7 @@ aside.search-facets {
 	margin-top: 12px;
 }
 
+.search-results-layout,
 .search-results h3 { display: none; }
 
 .search-results .resource {
@@ -219,3 +220,4 @@ aside.search-facets {
 }
 
 .search-facet .search-facet-items { padding-left: 0; }
+.search-facet .search-facet-item a::before { font-weight: 900; }
