@@ -8,11 +8,14 @@
                 $sortSelect = new Laminas\Form\Element\Select('sort');
                 $sortSelect->setValueOptions($sortOptions);
                 $sortSelect->setValue($query->getSort());
-                $sortSelect->setLabel($this->translate('Sort by'));
+                $sortSelect->setLabel($this->translate('Sort by:'));
+                $sortSelect->setAttribute('class', 'form-select');
             endif; ?>
             <?php if (!empty($sortSelect)): ?>
-            <?php echo $this->formLabel($sortSelect); ?>
-            <?php echo $this->formSelect($sortSelect); ?>
+            <div class="form-floating">
+                <?php echo $this->formLabel($sortSelect); ?>
+                <?php echo $this->formSelect($sortSelect); ?>
+            </div>
             <?php endif; ?>
         </form>
     </div>

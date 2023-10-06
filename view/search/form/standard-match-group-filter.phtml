@@ -4,7 +4,7 @@
     if (isset($query['field'])) {
         $fieldSelect->setValue($query['field']);
     }
-    $fieldSelect->setAttribute('class', 'search-form-standard-filter-field');
+    $fieldSelect->setAttribute('class', 'form-select');
     echo $this->formSelect($fieldSelect);
 ?>
 
@@ -26,8 +26,8 @@
     if (isset($query['term'])) {
         $termText->setValue($query['term']);
     }
-    $termText->setAttribute('class', 'search-form-standard-filter-term');
+    $termText->setAttribute('class', 'form-control');
     echo $this->formText($termText);
 ?>
 
-<button type="button" class="o-icon-delete search-delete-filter"></button>
+<button type="button" class="btn btn-danger o-icon-delete search-delete-filter"></button>

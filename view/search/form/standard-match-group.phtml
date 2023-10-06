@@ -1,4 +1,4 @@
-<div class="search-form-standard-match-group">
+<div class="match-group">
     <?php /* Using hidden input below to set default as ALL
     echo $this->formSelect((new \Laminas\Form\Element\Select($namePrefix . '[match]'))->setValueOptions([
         'all' => $this->translate('Match ALL of the following:'),
@@ -9,10 +9,10 @@
         <button type="button" class="o-icon-delete search-delete-filter"></button>
     <?php endif; ?>
 
-    <div class="search-form-standard-match-group-items">
+    <div class="match-group-items">
         <?php if (!empty($data['queries'])): ?>
             <?php foreach($data['queries'] as $i => $query): ?>
-                <div class="search-form-standard-match-group-item">
+                <div class="match-group-item">
                     <?php if (isset($query['match'])): ?>
                         <?php echo $this->partial('search/form/standard-match-group', [
                             'availableFieldsOptions' => $availableFieldsOptions,
@@ -32,7 +32,7 @@
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
-            <div class="search-form-standard-match-group-item">
+            <div class="match-group-item">
                 <?php echo $this->partial('search/form/standard-match-group-filter', [
                     'availableFieldsOptions' => $availableFieldsOptions,
                     'availableOperatorsOptions' => $availableOperatorsOptions,
@@ -40,7 +40,7 @@
                     'namePrefix' => $namePrefix . '[queries][0]',
                 ]); ?>
             </div>
-            <div class="search-form-standard-match-group-item">
+            <div class="match-group-item">
                 <?php echo $this->partial('search/form/standard-match-group-filter', [
                     'availableFieldsOptions' => $availableFieldsOptions,
                     'availableOperatorsOptions' => $availableOperatorsOptions,
@@ -48,18 +48,10 @@
                     'namePrefix' => $namePrefix . '[queries][1]',
                 ]); ?>
             </div>
-            <div class="search-form-standard-match-group-item">
-                <?php echo $this->partial('search/form/standard-match-group-filter', [
-                    'availableFieldsOptions' => $availableFieldsOptions,
-                    'availableOperatorsOptions' => $availableOperatorsOptions,
-                    'query' => [],
-                    'namePrefix' => $namePrefix . '[queries][2]',
-                ]); ?>
-            </div>
         <?php endif; ?>
 
-        <div class="search-form-standard-match-group-item">
-            <a href="#" class="button search-add-filter"><?php echo $this->translate('Add filter'); ?></a>
+        <div class="match-group-add-filter">
+            <a href="#" class="btn btn-secondary search-add-filter"><i class="fa-solid fa-plus"></i> <?php echo $this->translate('Add filter'); ?></a>
         </div>
     </div>
 </div>

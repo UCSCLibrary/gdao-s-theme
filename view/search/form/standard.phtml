@@ -39,7 +39,7 @@
     </div>
 
     <template id="template-search-filter">
-        <div class="search-form-standard-match-group-item">
+        <div class="match-group-item">
             <?php echo $this->partial('search/form/standard-match-group-filter', [
                 'availableFieldsOptions' => $availableFieldsOptions,
                 'availableOperatorsOptions' => $availableOperatorsOptions,
@@ -50,7 +50,7 @@
     </template>
 
     <template id="template-search-group">
-        <div class="search-form-standard-match-group-item">
+        <div class="match-group-item">
             <?php echo $this->partial('search/form/standard-match-group', [
                 'availableFieldsOptions' => $availableFieldsOptions,
                 'availableOperatorsOptions' => $availableOperatorsOptions,
@@ -82,14 +82,14 @@
 
             $('#search-form-standard').on('click', '.search-delete-filter', function (ev) {
                 ev.preventDefault();
-                $(this).closest('.search-form-standard-match-group-item').remove();
+                $(this).closest('.match-group-item').remove();
                 renameAllFormControls();
             });
 
             // Disable operators that are not valid to use with the selected field
             $('#search-form-standard').on('change', '.search-form-standard-filter-field', function () {
                 const validOperators = $(this).find('option:selected').attr('data-valid-operators').split(' ');
-                const options = $(this).closest('.search-form-standard-match-group-item').find('.search-form-standard-filter-operator').find('option');
+                const options = $(this).closest('.match-group-item').find('.search-form-standard-filter-operator').find('option');
                 options.attr('disabled', false);
                 options.each(function () {
                     const option = $(this);
@@ -111,8 +111,8 @@
                 $(element).children('select').attr('name', namePrefix + '[match]');
 
                 const items = $(element)
-                    .children('.search-form-standard-match-group-items')
-                    .children('.search-form-standard-match-group-item');
+                    .children('#search-form-standard .match-group-items')
+                    .children('#search-form-standard .match-group-item');
 
                 for (let i = 0; i < items.length; i++) {
                     const item = items.get(i);
@@ -122,7 +122,7 @@
                             $(this).attr('name', namePrefix + '[queries][' + i + '][' + match[1] + ']');
                         }
                     });
-                    $(item).children('.search-form-standard-match-group').each(function () {
+                    $(item).children('#search-form-standard .match-group').each(function () {
                         renameFormControls(this, namePrefix + '[queries][' + i + ']');
                     });
                 }
@@ -144,6 +144,6 @@
     <?php echo $this->partial('common/advanced-search/item-sets', ['query' => $query]); ?>
 <?php endif; ?>
 
-<button type="submit"><?php echo $translate('Search'); ?></button>
+<button type="submit" class="btn btn-primary submit"><i class="fa-solid fa-magnifying-glass"></i> <?php echo $translate('Search'); ?></button>
 
 <?php echo $this->form()->closeTag(); ?>

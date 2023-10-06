@@ -152,9 +152,39 @@ footer ul {
 }
 
 /*
- * Search
+ * Search Form
  *
  */
+
+#search-form-standard {
+	clear: both;
+	margin-bottom: 25px;
+}
+.match-group-item {
+	display: flex;
+	margin-bottom: 25px;
+}
+.match-group-item > * {
+	margin-right: 10px;
+}
+.match-group-item .form-select {
+	width: auto;
+	padding-right: 2.5em;
+}
+.match-group-add-filter {
+	float: left;
+	margin-right: 10px;
+}
+#search-form-show-link {
+	color: #fff;
+	margin-bottom: 10px;
+}
+
+/*
+ * Search Results
+ *
+ */
+
 .search-results-header,
 .search-results-footer,
 .search-results .resource-list,
@@ -171,6 +201,16 @@ aside.search-facets {
 .search-results-footer {
 	padding: 10px;
 	margin-top: 12px;
+}
+
+.search-results-sort .form-floating > label {
+	top: 3px;
+	padding: .25rem 0 0 .5rem;
+}
+
+.search-results-sort .form-floating > .form-select {
+	height: 38px;
+	padding: .25rem 40px .25rem 5rem;
 }
 
 .search-results-layout,
