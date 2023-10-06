@@ -175,6 +175,9 @@ footer ul {
 	float: left;
 	margin-right: 10px;
 }
+a.search-add-filter {
+	color: #fff;
+}
 #search-form-show-link {
 	color: #fff;
 	margin-bottom: 10px;
@@ -201,6 +204,30 @@ aside.search-facets {
 .search-results-footer {
 	padding: 10px;
 	margin-top: 12px;
+}
+
+.search-results-count .paginator input,
+.search-results-count .paginator label { display: none; }
+
+.search-results-count a.btn { margin-right: 10px; }
+
+.paginator a.disabled {
+	color: #858585;
+	border-color: #858585;
+}
+
+.paginator-input { position: relative; }
+
+.paginator-input input {
+	padding-right: 5rem;
+	border: 1px solid #858585;
+  border-radius: 0;
+}
+
+.paginator-input label {
+	position: absolute;
+	right: 0;
+	color: #858585;
 }
 
 .search-results-sort .form-floating > label {

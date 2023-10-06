@@ -7,6 +7,16 @@ $to = ($currentPage < $pageCount) ? $offset + $perPage : $totalCount;
 
 <?php if ($totalCount): ?>
 <form method="GET" action="">
+    <?php echo $this->queryToHiddenInputs(['page']); ?>
+    <?php
+        if (strpos($previousPageUrl, '/item?') === false) {
+            $previousQuery = explode("?", $previousPageUrl)[1];
+            $nextQuery = explode("?", $nextPageUrl)[1];
+            $prefix = explode("?", $_SERVER['REQUEST_URI'])[0];
+            $previousPageUrl = $prefix."?".$previousQuery;
+            $nextPageUrl = $prefix."?".$nextQuery;
+        }
+    ?>
     <div class="row">
         <div class="col-auto">
             <label class="col-form-label">
@@ -14,41 +24,27 @@ $to = ($currentPage < $pageCount) ? $offset + $perPage : $totalCount;
                 <?= $translate('results'); ?>
             </label>
         </div>
+        <?php if($pageCount > 0) : ?>
+            <div class="col paginator">
+                <div class="btn-group">
+                    <a href="<?= $previousPageUrl; ?>"
+                        class="btn btn-outline-primary <?= $currentPage != 1 ? "" : "disabled" ?>"><i
+                            class="fa-solid fa-arrow-left"></i></a>
+                    <div class="paginator-input">
+                        <input type="text" name="page" class="btn form-control"
+                        value="<?php echo $currentPage; ?>" size="4" <?php echo ($pageCount == 1) ? 'readonly' : ''; ?>
+                    aria-label="<?php echo $translate('Page'); ?>">
 
-        <div class="col-auto">
-            <input type="text" name="page" class="page-input-top form-control"
-                value="<?php echo $currentPage; ?>" size="4" <?php echo ($pageCount == 1) ? 'readonly' : ''; ?>
-            aria-label="<?php echo $translate('Page'); ?>">
-
-        </div>
-
-
-        <div class="col-auto">
-            <label class="col-form-label">
-                <?php echo sprintf($translate('/ %s'), $pageCount); ?>
-            </label>
-        </div>
-
-
-        <div class="col-auto">
-            <?php echo $this->queryToHiddenInputs(['page']); ?>
-            <?php
-
-if (strpos($previousPageUrl, '/item?') === false) {
-    $previousQuery = explode("?", $previousPageUrl)[1];
-    $nextQuery = explode("?", $nextPageUrl)[1];
-    $prefix = explode("?", $_SERVER['REQUEST_URI'])[0];
-    $previousPageUrl = $prefix."?".$previousQuery;
-    $nextPageUrl = $prefix."?".$nextQuery;
-}
-?>
-            <a href="<?= $previousPageUrl; ?>"
-                class="btn btn-outline-primary <?= $currentPage != 1 ? "" : "disabled" ?>"><i
-                    class="fa-solid fa-arrow-left"></i></a>
-            <a href="<?= $nextPageUrl; ?>"
-                class="btn btn-outline-primary <?= $currentPage < $pageCount ? "" : "disabled" ?>"><i
-                    class="fa-solid fa-arrow-right"></i></a>
-        </div>
+                        <label class="btn">
+                            <?php echo sprintf($translate('/ %s pages'), $pageCount); ?>
+                        </label>
+                    </div>
+                    <a href="<?= $nextPageUrl; ?>"
+                        class="btn btn-outline-primary <?= $currentPage < $pageCount ? "" : "disabled" ?>"><i
+                            class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        <?php endif; ?>
 
     </div>
 
