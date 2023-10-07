@@ -219,15 +219,21 @@ aside.search-facets {
 .paginator-input { position: relative; }
 
 .paginator-input input {
-	padding-right: 5rem;
+	padding-right: 7rem;
 	border: 1px solid #858585;
   border-radius: 0;
+  border-left: none;
+  border-right: none;
 }
 
 .paginator-input label {
 	position: absolute;
 	right: 0;
 	color: #858585;
+}
+.paginator-input label:hover {
+	color: #858585;
+	cursor: default;
 }
 
 .search-results-sort .form-floating > label {
