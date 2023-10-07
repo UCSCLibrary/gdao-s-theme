@@ -24,7 +24,7 @@ $to = ($currentPage < $pageCount) ? $offset + $perPage : $totalCount;
                 <?= $translate('results'); ?>
             </label>
         </div>
-        <?php if($pageCount > 0) : ?>
+        <?php if($pageCount > 1) : ?>
             <div class="col paginator">
                 <div class="btn-group">
                     <a href="<?= $previousPageUrl; ?>"
