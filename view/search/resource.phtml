@@ -43,10 +43,8 @@
             <span class="item-type">(<?php echo $resource->displayResourceTemplateLabel(); ?>)</span>
         </h4>
 
-        <?php $searchUrl = $this->url('search-page-1',[], ['query' => ['q' => '']]); ?>
-
-        <?php if ($creator = $resource->value('dcterms:creator')): ?>
-            <?php $creatorUrl = $searchUrl . "&limit[creator][0]=" . $creator->value(); ?>
+        <?php if ($creator = $resource->value('dcterms:creator')) : ?>
+            <?php $creatorUrl = $this->GdaoSearchUrl(null, ['creator' => $creator->value()]); ?>
             <div class="metadata">
                 <span class="label">Creator:</span>
                 <span class="value"><a href="<?php echo $creatorUrl  ?>"><?php echo $creator ?></a></span>
@@ -54,7 +52,7 @@
         <?php endif; ?>
 
         <?php if ($relatedShow = $resource->value('dcterms:coverage')): ?>
-            <?php $relatedUrl = $searchUrl . "&limit[coverage][0]=" . $relatedShow->value(); ?>
+            <?php $relatedUrl = $this->GdaoSearchUrl(null, ['coverage' => $relatedShow->value()]); ?>
             <div class="metadata">
                 <span class="label">Related Show:</span>
                 <span class="value"><a href="<?php echo $relatedUrl  ?>"><?php echo $relatedShow ?></a></span>
