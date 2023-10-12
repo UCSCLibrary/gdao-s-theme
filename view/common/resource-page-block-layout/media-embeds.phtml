@@ -1,7 +1,7 @@
 <?php
 $resourceMedia = $resource->media();
 ?>
-<?php if (false && $resourceMedia): ?>
+<?php if ($resourceMedia): ?>
 <div class="media-embeds">
     <?php foreach ($resourceMedia as $media): ?>
     <?php echo $media->render(); ?>
