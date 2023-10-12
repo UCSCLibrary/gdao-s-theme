@@ -9,19 +9,27 @@ $lang = $this->lang();
 
 <?php $this->trigger('view.show.before'); ?>
 
-<div class="container mt-4 mb-5" style="word-wrap : break-word;">
-<div class="my-5">
-<?php echo $this->pageTitle($item->displayTitle(null, ($filterLocale ? $lang : null)), 2); ?>
-</div>
+<div class="container mb-5">
+    <?php echo $this->pageTitle($item->displayTitle(null, ($filterLocale ? $lang : null)), 2); ?>
 
-<!-- <h3><?php echo $translate('Item'); ?></h3> -->
+    <!-- <h3><?php echo $translate('Item'); ?></h3> -->
 
+    <div class="row">
+        <div class="col col-9 main">
+            <?php echo $this->resourcePageBlocks($item, 'main')->getBlocks(); ?>
+        </div>
 
-<div class="my-5">
-<?php echo $this->resourcePageBlocks($item)->getBlocks(); ?>
-</div>
+        <div class="col col-3 sidebar">
+            <?php echo $this->resourcePageBlocks($item, 'sidebar')->getBlocks(); ?>
+        </div>
+    </div>
 
-<div class="my-5 pb-5 text-center">
+    <div class="row">
+        <div class="col col-12 secondary">
+            <?php echo $this->resourcePageBlocks($item, 'secondary')->getBlocks(); ?>
+        </div>
+
+        <div class="col col-12 text-center">
             <div>
                 <b><?php echo $translate('Date Created'); ?>
                 </b>
@@ -39,5 +47,6 @@ $lang = $this->lang();
             </div>
         </div>
 
-<?php $this->trigger('view.show.after'); ?>
+        <?php $this->trigger('view.show.after'); ?>
+    </div>
 </div>
