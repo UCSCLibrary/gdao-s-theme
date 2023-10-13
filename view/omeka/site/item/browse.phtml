@@ -21,7 +21,7 @@ $sortHeadings = [
         'value' => 'created'
     ]
 ];
-$sortProperties = $this->themeSetting('sort_property');
+$sortProperties = "";
 if ($sortProperties != "") {
     $rows = explode("\n", $sortProperties);
     for ($i = 0; $i < count($rows); $i++) {
@@ -42,7 +42,7 @@ if ($sortProperties != "") {
 }
 
 //リスト
-$bodyProperties = $this->themeSetting('body_property');
+$bodyProperties = "";
 
 $bodyHeadings = [];
 $rows = explode("\n", $bodyProperties);
@@ -58,7 +58,7 @@ for ($i = 0; $i < count($rows); $i++) {
 }
 
 //レイアウト
-$layoutSetting = $this->themeSetting('browse_layout');
+$layoutSetting = 'list';
 $gridState = ($layoutSetting == 'grid') ? 'disabled' : '';
 $listState = ($layoutSetting == 'list') ? 'disabled': '';
 $isGrid = (!isset($layoutSetting) || strpos($layoutSetting, 'grid') !== false) ? 1 : 0;
