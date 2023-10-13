@@ -1,0 +1,26 @@
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+
+$primaryValues = process_theme_values($this->themeSetting('primary_values'));
+$secondaryValues = process_theme_values($this->themeSetting('secondary_values'));
+$facetValues = process_theme_values($this->themeSetting('facet_values'));
+
+if ($this->status()->isSiteRequest()) {
+    $labelInfo = $this->siteSetting('property_label_information');
+    $showLocale = (bool) $this->siteSetting('show_locale_label', true);
+    $filterLocale = $this->siteSetting('filter_locale_values');
+    $lang = $this->lang();
+    $showValueAnnotations = (bool) $this->siteSetting('show_value_annotations', false);
+} else {
+    $labelInfo = $this->setting('property_label_information');
+    $showLocale = true;
+    $filterLocale = false;
+    $lang = null;
+    $showValueAnnotations = true;
+}
+$filterLocaleCallback = function ($value) use ($lang) {
+    $valueLang = $value->lang();
+    return $valueLang == '' || strcasecmp($valueLang, $lang) === 0;
+};
+?>

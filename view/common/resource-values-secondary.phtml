@@ -1,0 +1,10 @@
+<dl>
+<?php
+include('resource-values-vars.phtml');
+foreach ($values as $term => $propertyData) {
+    if (in_array($term, $secondaryValues)) {
+        include('resource-value.phtml');
+    }
+}
+?>
+</dl>

@@ -3,6 +3,6 @@ $options = [];
 if ($this->siteSetting('exclude_resources_not_in_site')) {
     $options['siteId'] = $this->currentSite()->id();
 }
-$options['viewName'] = 'common/resource-values-secondary';
+$options['viewName'] = 'common/resource-values-primary';
 echo $resource->displayValues($options);
 ?>

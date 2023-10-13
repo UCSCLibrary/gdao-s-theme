@@ -5,6 +5,16 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/resource-page-blocks.cs
 $this->htmlElement('body')->appendAttribute('class', 'item resource show');
 $filterLocale = (bool) $this->siteSetting('filter_locale_values');
 $lang = $this->lang();
+
+function process_theme_values($values = "") {
+    if ($values != "") {
+        $values = explode("\n", $values);
+        return array_map('trim', $values);
+    }
+    else {
+        return array();
+    }
+}
 ?>
 
 <?php $this->trigger('view.show.before'); ?>
