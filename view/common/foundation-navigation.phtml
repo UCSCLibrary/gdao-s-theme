@@ -14,7 +14,7 @@ $layoutAttributes = [
     <?php foreach ($container as $page): ?>
         <?php if (!$this->navigation()->accept($page)) continue; ?>
         <?php /* @var $page Zend\Navigation\Page\Mvc */ ?>
-        <?php $hasChildren = $page->hasPages() ?>\
+        <?php $hasChildren = $page->hasPages() ?>
         <?php if (!$hasChildren): ?>
             <li class="nav-item <?php if ($page->isActive()) echo 'active' ?>">
                 <a 
