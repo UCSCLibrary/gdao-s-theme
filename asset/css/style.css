@@ -118,7 +118,11 @@ nav.navbar-gdao {
 	padding: 30px 0;
 	clear: both;
 }
-
+#content h2 {
+	border-bottom: 1px solid #dadada;
+	margin-bottom: 20px;
+	padding: 10px 0 3px 0;
+}
 /*
  * Footer
  *
@@ -300,3 +304,30 @@ aside.search-facets {
 
 .search-facet .search-facet-items { padding-left: 0; }
 .search-facet .search-facet-item a::before { font-weight: 900; }
+
+/*
+ * Item show page
+ *
+ */
+body.show .media-render img {
+	max-width: 90%;
+	border: 3px solid #aaa;
+	margin-bottom: 15px;
+}
+body.show .media-render {
+	margin-bottom: 15px;
+}
+body.show .sidebar {
+	padding-left: 16px;
+  border-left: 1px solid #ddd;
+}
+#primary-values dd {
+	display: list-item;
+  list-style-type: circle;
+  list-style-position: inside;
+}
+body.show .row.main {
+	padding-bottom: 22px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid #ddd;
+}

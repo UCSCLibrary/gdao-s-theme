@@ -1,0 +1,15 @@
+<?php
+
+$citeTitle = $resource->displayTitle();
+$citeDate = date('F j, Y');
+$citeUrl = $resource->url(null, true);
+?>
+
+<?php if($citeTitle && $citeDate && $citeUrl) : ?>
+<dl>
+<div class="property">
+    <dt>Citation:</dt>
+    <dd>"<?php echo $citeTitle ?>", Grateful Dead Archive Online, accessed <?php echo $citeDate ?>, <?php echo $citeUrl ?>.</dd>
+</div>
+</dl>
+<?php endif; ?>

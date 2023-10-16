@@ -15,6 +15,7 @@
     } else {
         $propertyTerm = null;
     }
+    $facetName = str_replace(':', '_', $term);
 ?>
     <div class="property">
         <dt>
@@ -40,7 +41,15 @@
             <?php if ($showLocale && $valueLang): ?>
             <span class="language"><?php echo $valueLang; ?></span>
             <?php endif; ?>
-            <span class="value-content"><?php echo $filterLocale ? $value->asHtml($lang) : $value->asHtml(); ?></span>
+            <?php
+                $valuePrinted = $filterLocale ? $value->asHtml($lang) : $value->asHtml();
+                $valueUrl = $this->GdaoSearchUrl(null, [$facetName => $value->value()]);
+            ?>
+            <?php if (in_array($facetName, $facetValues)) : ?>
+                <a class="value-content" href="<?php echo $valueUrl; ?>"><?php echo $valuePrinted; ?></a>
+            <?php else : ?>
+                <span class="value-content"><?php echo $valuePrinted; ?></span>
+            <?php endif; ?>
             <?php if(!$value->isPublic()): ?>
                 <span class="o-icon-private" aria-role="tooltip" title="<?php echo $this->escapeHtml($translate('Private')); ?>" aria-label="<?php echo $this->escapeHtml($translate('Private')); ?>"></span>
             <?php endif; ?>

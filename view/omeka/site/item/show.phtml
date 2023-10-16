@@ -24,7 +24,7 @@ function process_theme_values($values = "") {
 
     <!-- <h3><?php echo $translate('Item'); ?></h3> -->
 
-    <div class="row">
+    <div class="row main">
         <div class="col col-9 main">
             <?php echo $this->resourcePageBlocks($item, 'main')->getBlocks(); ?>
         </div>
@@ -34,29 +34,32 @@ function process_theme_values($values = "") {
         </div>
     </div>
 
-    <div class="row">
-        <div class="col col-12 secondary">
-            <?php echo $this->resourcePageBlocks($item, 'secondary')->getBlocks(); ?>
-        </div>
-
+    <div class="row secondary">
         <div class="col col-12 text-center">
-            <div>
-                <b><?php echo $translate('Date Created'); ?>
-                </b>
-                <div>
-                    <?php echo $escape($this->i18n()->dateFormat($item->created())); ?>
-                </div>
-            </div>
-            
-            <div class="mt-4">
-                <b><?php echo $translate('Date Modified'); ?>
-                </b>
-                <div>
-                    <?php echo $escape($this->i18n()->dateFormat($item->modified())); ?>
-                </div>
-            </div>
+            <button class="btn btn-secondary" id="item-details-btn">Show Details</button>
+        </div>
+        <div class="col col-12 secondary" id="item-details">
+            <?php echo $this->resourcePageBlocks($item, 'secondary')->getBlocks(); ?>
         </div>
 
         <?php $this->trigger('view.show.after'); ?>
     </div>
 </div>
+
+<script>
+$(document).ready(function() {
+    $('#item-details').hide();
+
+    var more = false;
+    $('#item-details-btn').click(function() {
+        if(more) {
+            $('#item-details').slideUp();
+            $(this).html('Show Details');
+        } else {
+            $('#item-details').slideDown();
+            $(this).html('Hide Details');
+        }
+        more = !more;
+    });
+});
+</script>

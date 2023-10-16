@@ -44,7 +44,7 @@
         </h4>
 
         <?php if ($creator = $resource->value('dcterms:creator')) : ?>
-            <?php $creatorUrl = $this->GdaoSearchUrl(null, ['creator' => $creator->value()]); ?>
+            <?php $creatorUrl = $this->GdaoSearchUrl(null, ['dcterms_creator' => $creator->value()]); ?>
             <div class="metadata">
                 <span class="label">Creator:</span>
                 <span class="value"><a href="<?php echo $creatorUrl  ?>"><?php echo $creator ?></a></span>
@@ -52,7 +52,7 @@
         <?php endif; ?>
 
         <?php if ($relatedShow = $resource->value('dcterms:coverage')): ?>
-            <?php $relatedUrl = $this->GdaoSearchUrl(null, ['coverage' => $relatedShow->value()]); ?>
+            <?php $relatedUrl = $this->GdaoSearchUrl(null, ['dcterms_coverage' => $relatedShow->value()]); ?>
             <div class="metadata">
                 <span class="label">Related Show:</span>
                 <span class="value"><a href="<?php echo $relatedUrl  ?>"><?php echo $relatedShow ?></a></span>
