@@ -1,6 +1,19 @@
 <dl id="secondary-values">
 <?php
 include('resource-values-vars.phtml');
+
+// Move ToC to the beginning, and Rights to the end
+if (isset($values['dcterms:tableOfContents'])) {
+    $e = $values['dcterms:tableOfContents'];
+    unset($values['dcterms:tableOfContents']);
+    $values = array('dcterms:tableOfContents' => $e) + $values;
+}
+if (isset($values['dcterms:rights'])) {
+    $e = $values['dcterms:rights'];
+    unset($values['dcterms:rights']);
+    $values['dcterms:rights'] = $e;
+}
+
 foreach ($values as $term => $propertyData) {
     if (in_array($term, $secondaryValues)) {
         include('resource-value.phtml');

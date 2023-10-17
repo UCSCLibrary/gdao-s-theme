@@ -1,5 +1,8 @@
 <?php
     $propertyValues = $propertyData['values'];
+    if (!is_array($propertyValues)) {
+        return;
+    }
     if ($filterLocale) {
         $propertyValues = array_filter($propertyValues, $filterLocaleCallback);
     }
@@ -8,6 +11,8 @@
     }
     $property = $propertyData['property'];
     $propertyLabel = $propertyData['alternate_label'] ?: $translate($property->label());
+    $propertyLabel = $this->GdaoLabelMapper($escape($propertyLabel));
+    $propertyLabel = is_array($propertyValues) && count($propertyValues) > 1 ? $propertyLabel . "s" : $propertyLabel;
     if ('term' === $labelInfo) {
         $propertyTerm = $property->term();
     } elseif ('vocab' === $labelInfo) {
@@ -19,9 +24,9 @@
 ?>
     <div class="property">
         <dt>
-        <?php echo $escape($propertyLabel); ?>
+        <?php echo $propertyLabel; ?>
         <?php if ($propertyTerm !== null): ?>
-        <span class="field-term">(<?php echo $escape($propertyTerm); ?>)</span>
+            <span class="field-term">(<?php echo $escape($propertyTerm); ?>)</span>
         <?php endif; ?>
         </dt>
         <?php foreach ($propertyValues as $value): ?>
@@ -46,9 +51,9 @@
                 $valueUrl = $this->GdaoSearchUrl(null, [$facetName => $value->value()]);
             ?>
             <?php if (in_array($facetName, $facetValues)) : ?>
-                <a class="value-content" href="<?php echo $valueUrl; ?>"><?php echo $valuePrinted; ?></a>
+                <a class="value-content" href="<?php echo $valueUrl; ?>"><?php echo $this->GdaoValueFormat($valuePrinted); ?></a>
             <?php else : ?>
-                <span class="value-content"><?php echo $valuePrinted; ?></span>
+                <span class="value-content"><?php echo $this->GdaoValueFormat($valuePrinted); ?></span>
             <?php endif; ?>
             <?php if(!$value->isPublic()): ?>
                 <span class="o-icon-private" aria-role="tooltip" title="<?php echo $this->escapeHtml($translate('Private')); ?>" aria-label="<?php echo $this->escapeHtml($translate('Private')); ?>"></span>
