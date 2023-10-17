@@ -1,0 +1,31 @@
+<?php
+
+$questions = [
+    'how' => 'How did you become a Deadhead?',
+    'show' => 'What is your favorite Dead show and why?',
+    'song' => 'What is your favorite Dead song and why?',
+    'scene' => 'What is your favorite aspect of the Dead scene?',
+    'phenom' => 'What, if anything, do you think is important about the Dead, and about the Dead phenomenon?',
+    'other' => "Do you have anything else related to the Dead that you'd like to share?",
+];
+$answers = [
+    'how' => $resource->value('gdao:ohHow'),
+    'show' => $resource->value('gdao:ohShow'),
+    'song' => $resource->value('gdao:ohSong'),
+    'scene' => $resource->value('gdao:ohScene'),
+    'phenom' => $resource->value('gdao:ohPhenom'),
+    'other' => $resource->value('gdao:ohOther'),
+];
+
+?>
+
+<dl class="oral-history">
+<?php foreach ($answers as $key => $answer): ?>
+    <?php if (!empty($answer)): ?>
+    <div class="property">
+        <dt><?php echo $questions[$key]; ?></dt>
+        <dd><?php echo $answer; ?></dd>
+    </div>
+    <?php endif; ?>
+<?php endforeach; ?>
+</dl>
