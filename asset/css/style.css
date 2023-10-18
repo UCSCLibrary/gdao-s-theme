@@ -352,3 +352,10 @@ body.show .oral-history {
 	font-size: 20px;
 	font-weight: bold;
 }
+.internet-archive-embed {
+  display: flex;
+  justify-content: center;
+  background-color: #f8f8f8;
+  border: 1px solid #cbcbcb;
+  padding: 20px 0;
+}
