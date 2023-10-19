@@ -352,8 +352,22 @@ body.show .oral-history {
 	font-size: 20px;
 	font-weight: bold;
 }
-.internet-archive-embed,
-.hyrax-embed {
+div.website-card {
+	display: block;
+	padding: 20px;
+}
+.website-card > h3 {
+	font-weight: normal;
+  color: #646464;
+  font-size: 17px;
+}
+.website-card > a {
+	display: block;
+	margin-bottom: 16px;
+	font-size: 18px;
+	font-weight: bold;
+}
+.resource-embed-block {
   display: flex;
   justify-content: center;
   background-color: #f8f8f8;

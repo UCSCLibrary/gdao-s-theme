@@ -1,0 +1,10 @@
+<div class="resource-embed-block website-card">
+    <?php if ($uri = $resource->value('bibo:uri')) : ?>
+      <h3>URL:</h3>
+      <a href="<?php echo $uri; ?>" target="_blank"><?php echo $uri; ?></a>
+    <?php endif; ?>
+
+    <?php if ($desc = $resource->value('dcterms:description')) : ?>
+      <p><?php echo $desc; ?></p>
+    <?php endif; ?>
+</div>
