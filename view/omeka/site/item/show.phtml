@@ -5,6 +5,7 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/resource-page-blocks.cs
 $this->htmlElement('body')->appendAttribute('class', 'item resource show');
 $filterLocale = (bool) $this->siteSetting('filter_locale_values');
 $lang = $this->lang();
+$restricted = $item->value('gdao:accessRestricted');
 
 function process_theme_values($values = "") {
     if ($values != "") {
@@ -26,7 +27,14 @@ function process_theme_values($values = "") {
 
     <div class="row main">
         <div class="col col-9 main">
-            <?php echo $this->resourcePageBlocks($item, 'main')->getBlocks(); ?>
+            <?php if (($restricted != "true") || $this->GdaoIsAuthorized()) : ?>
+                <?php echo $this->resourcePageBlocks($item, 'main')->getBlocks(); ?>
+            <?php else : ?>
+                <div class="resource-embed-block flex-column text-center">
+                    <p><img src="/themes/gdao-s-theme/asset/img/content-not-available.png" alt="UCSC Access Only" /></p>
+                    <p>Access is restricted to UCSC campus for copyright reasons.</p>
+                </div>
+            <?php endif; ?>
         </div>
 
         <div class="col col-3 sidebar">
