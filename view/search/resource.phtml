@@ -26,21 +26,45 @@
  * The fact that you are presently reading this means that you have had
  * knowledge of the CeCILL license and that you accept its terms.
  */
+
+    $escape = $this->plugin('escapeHtml');
+    $images = array(
+        'Sound' => 'itemtype-sound.png',
+        'Video' => 'itemtype-video.png',
+        'Story' => 'itemtype-oralhistory.png',
+        'Article' => 'itemtype-article.png',
+        'Website' => 'itemtype-website.png',
+    );
+    $title = $resource->displayTitle();
+    $type = $resource->displayResourceTemplateLabel();
 ?>
 
-<?php $escape = $this->plugin('escapeHtml'); ?>
-
 <<?php echo $tag; ?> class="<?php echo $resource->resourceName(); ?> resource">
+    <a href="<?php echo $resource->url() ?>">
     <?php if (method_exists($resource, 'primaryMedia') && $primaryMedia = $resource->primaryMedia()): ?>
-        <a href="<?php echo $resource->url() ?>"><img
+        <img
             src="<?php echo $escape($primaryMedia->thumbnailUrl('square')); ?>"
             title="<?php echo $escape($primaryMedia->displayTitle()); ?>"
             alt="<?php echo $escape($primaryMedia->mediaType()); ?> thumbnail"
-        /></a>
+        />
+    <?php elseif (array_key_exists($type, $images)) : ?>
+        <?php if (($resource->value('gdao:accessRestricted') != "true") || $this->GdaoIsAuthorized()) : ?>
+            <?php $image = "themes/gdao-s-theme/asset/img/icon/" . $images[$type]; ?>
+            <img src="<?php echo $image; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>" />
+        <?php else : ?>
+            <img src="/themes/gdao-s-theme/asset/img/content-not-available.png" alt="Image not available due to copyright restrictions" title="<?php echo $title; ?>" />
+        <?php endif; ?>
+    <?php elseif ($resource->value('dcterms:source') == "Internet Archive") : ?>
+        <img src="/themes/gdao-s-theme/asset/img/ia-logo-sm.png" alt="<?php echo $title; ?> thumbnail" title="<?php echo $title; ?>" class="py-4" />
+    <?php else : ?>
+        <img src="/themes/gdao-s-theme/asset/img/logo-gdao-gray.png" alt="<?php echo $title; ?> thumbnail" title="<?php echo $title; ?>" class="py-4" />
     <?php endif; ?>
+    </a>
     <div class="metadata-set">
         <h4><?php echo $resource->link($resource->displayTitle()); ?>
-            <span class="item-type">(<?php echo $resource->displayResourceTemplateLabel(); ?>)</span>
+            <?php if (!in_array($type, ['Backstage Pass', 'Album Cover', 'Laminate'])) : ?>
+                <span class="item-type">(<?php echo $resource->displayResourceTemplateLabel(); ?>)</span>
+            <?php endif; ?>
         </h4>
 
         <?php if ($creator = $resource->value('dcterms:creator')) : ?>
