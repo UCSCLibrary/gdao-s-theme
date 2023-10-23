@@ -40,6 +40,7 @@
 ?>
 
 <<?php echo $tag; ?> class="<?php echo $resource->resourceName(); ?> resource">
+    <div class="resource-thumbnail">
     <a href="<?php echo $resource->url() ?>">
     <?php if (method_exists($resource, 'primaryMedia') && $primaryMedia = $resource->primaryMedia()): ?>
         <img
@@ -55,11 +56,12 @@
             <img src="/themes/gdao-s-theme/asset/img/content-not-available.png" alt="Image not available due to copyright restrictions" title="<?php echo $title; ?>" />
         <?php endif; ?>
     <?php elseif ($resource->value('dcterms:source') == "Internet Archive") : ?>
-        <img src="/themes/gdao-s-theme/asset/img/ia-logo-sm.png" alt="<?php echo $title; ?> thumbnail" title="<?php echo $title; ?>" class="py-4" />
+        <img src="/themes/gdao-s-theme/asset/img/ia-logo-sm.png" alt="<?php echo $title; ?> thumbnail" title="<?php echo $title; ?>" />
     <?php else : ?>
-        <img src="/themes/gdao-s-theme/asset/img/logo-gdao-gray.png" alt="<?php echo $title; ?> thumbnail" title="<?php echo $title; ?>" class="py-4" />
+        <img src="/themes/gdao-s-theme/asset/img/logo-gdao-gray.png" alt="<?php echo $title; ?> thumbnail" title="<?php echo $title; ?>" />
     <?php endif; ?>
     </a>
+    </div>
     <div class="metadata-set">
         <h4><?php echo $resource->link($resource->displayTitle()); ?>
             <?php if (!in_array($type, ['Backstage Pass', 'Album Cover', 'Laminate'])) : ?>

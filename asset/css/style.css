@@ -259,7 +259,6 @@ aside.search-facets {
 .search-results h3 { display: none; }
 
 .search-results .resource {
-	display: flex;
 	border-bottom: 1px solid #cbcbcb;
 	padding: 16px;
 }
@@ -268,17 +267,19 @@ aside.search-facets {
 	background-color: #fff;
 }
 
-.resource > a {
-	display: block;
-	width: 100%;
-	max-width: 200px;
-	border: 3px solid #eee;
+.resource-thumbnail {
+	float:left;
+	margin-right: 16px;
+}
+.resource-thumbnail a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 200px;
+	height: 200px;
   background-color: #eee;
 }
-.resource > a img {
-	margin: 0 auto;
-  display: block;
-}
+
 .resource .metadata-set { margin-left: 16px; }
 
 .resource .metadata { margin-bottom: 10px; }
