@@ -41,26 +41,26 @@
 
 <<?php echo $tag; ?> class="<?php echo $resource->resourceName(); ?> resource">
     <div class="resource-thumbnail">
-    <a href="<?php echo $resource->url() ?>">
-    <?php if (method_exists($resource, 'primaryMedia') && $primaryMedia = $resource->primaryMedia()): ?>
-        <img
-            src="<?php echo $escape($primaryMedia->thumbnailUrl('square')); ?>"
-            title="<?php echo $escape($primaryMedia->displayTitle()); ?>"
-            alt="<?php echo $escape($primaryMedia->mediaType()); ?> thumbnail"
-        />
-    <?php elseif (array_key_exists($type, $images)) : ?>
-        <?php if (($resource->value('gdao:accessRestricted') != "true") || $this->GdaoIsAuthorized()) : ?>
-            <?php $image = "themes/gdao-s-theme/asset/img/icon/" . $images[$type]; ?>
-            <img src="<?php echo $image; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>" />
+        <a href="<?php echo $resource->url() ?>">
+        <?php if (method_exists($resource, 'primaryMedia') && $primaryMedia = $resource->primaryMedia()): ?>
+            <img
+                src="<?php echo $escape($primaryMedia->thumbnailUrl('square')); ?>"
+                title="<?php echo $escape($primaryMedia->displayTitle()); ?>"
+                alt="<?php echo $escape($primaryMedia->mediaType()); ?> thumbnail"
+            />
+        <?php elseif (array_key_exists($type, $images)) : ?>
+            <?php if (($resource->value('gdao:accessRestricted') != "true") || $this->GdaoIsAuthorized()) : ?>
+                <?php $image = "themes/gdao-s-theme/asset/img/icon/" . $images[$type]; ?>
+                <img src="<?php echo $image; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>" />
+            <?php else : ?>
+                <img src="/themes/gdao-s-theme/asset/img/content-not-available.png" alt="Image not available due to copyright restrictions" title="<?php echo $title; ?>" />
+            <?php endif; ?>
+        <?php elseif ($resource->value('dcterms:source') == "Internet Archive") : ?>
+            <img src="/themes/gdao-s-theme/asset/img/ia-logo-sm.png" alt="<?php echo $title; ?> thumbnail" title="<?php echo $title; ?>" />
         <?php else : ?>
-            <img src="/themes/gdao-s-theme/asset/img/content-not-available.png" alt="Image not available due to copyright restrictions" title="<?php echo $title; ?>" />
+            <img src="/themes/gdao-s-theme/asset/img/logo-gdao-gray.png" alt="<?php echo $title; ?> thumbnail" title="<?php echo $title; ?>" />
         <?php endif; ?>
-    <?php elseif ($resource->value('dcterms:source') == "Internet Archive") : ?>
-        <img src="/themes/gdao-s-theme/asset/img/ia-logo-sm.png" alt="<?php echo $title; ?> thumbnail" title="<?php echo $title; ?>" />
-    <?php else : ?>
-        <img src="/themes/gdao-s-theme/asset/img/logo-gdao-gray.png" alt="<?php echo $title; ?> thumbnail" title="<?php echo $title; ?>" />
-    <?php endif; ?>
-    </a>
+        </a>
     </div>
     <div class="metadata-set">
         <h4><?php echo $resource->link($resource->displayTitle()); ?>
