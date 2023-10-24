@@ -37,6 +37,7 @@
     );
     $title = $resource->displayTitle();
     $type = $resource->displayResourceTemplateLabel();
+    $values = $resource->values();
 ?>
 
 <<?php echo $tag; ?> class="<?php echo $resource->resourceName(); ?> resource">
@@ -69,19 +70,31 @@
             <?php endif; ?>
         </h4>
 
-        <?php if ($creator = $resource->value('dcterms:creator')) : ?>
-            <?php $creatorUrl = $this->GdaoSearchUrl(null, ['dcterms_creator' => $creator->value()]); ?>
+        <?php if (isset($values['dcterms:creator'])) : ?>
             <div class="metadata">
-                <span class="label">Creator:</span>
-                <span class="value"><a href="<?php echo $creatorUrl  ?>"><?php echo $creator ?></a></span>
+                <?php
+                $creators = $values['dcterms:creator']['values'];
+                $label = count($creators) > 1 ? 'Creators:' : 'Creator:';
+                ?>
+                <span class="label"><?php echo $label; ?></span>
+                <?php foreach ($creators as $value) : ?>
+                    <?php $url = $this->GdaoSearchUrl(null, ['dcterms_creator' => $value->value()]); ?>
+                    <span class="value"><a href="<?php echo $url  ?>"><?php echo $value->value() ?></a></span>
+                <?php endforeach; ?>
             </div>
         <?php endif; ?>
 
-        <?php if ($relatedShow = $resource->value('dcterms:coverage')): ?>
-            <?php $relatedUrl = $this->GdaoSearchUrl(null, ['dcterms_coverage' => $relatedShow->value()]); ?>
+        <?php if (isset($values['dcterms:coverage'])) : ?>
             <div class="metadata">
-                <span class="label">Related Show:</span>
-                <span class="value"><a href="<?php echo $relatedUrl  ?>"><?php echo $relatedShow ?></a></span>
+                <?php
+                $shows = $values['dcterms:coverage']['values'];
+                $label = count($shows) > 1 ? 'Related Shows:' : 'Related Show:';
+                ?>
+                <span class="label"><?php echo $label; ?></span>
+                <?php foreach ($shows as $value) : ?>
+                    <?php $url = $this->GdaoSearchUrl(null, ['dcterms_coverage' => $value->value()]); ?>
+                    <span class="value"><a href="<?php echo $url  ?>"><?php echo $value->value() ?></a></span>
+                <?php endforeach; ?>
             </div>
         <?php endif; ?>
     </div>
