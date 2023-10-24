@@ -281,7 +281,10 @@ aside.search-facets {
   background-color: #eee;
 }
 
-.resource .metadata-set { margin-left: 216px; }
+.resource .metadata-set {
+	margin-left: 216px;
+	font-size: 0.9em;
+}
 
 .resource .metadata { margin-bottom: 10px; }
 
