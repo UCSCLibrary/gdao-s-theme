@@ -103,7 +103,8 @@ nav.navbar-gdao {
 	}
 	#navbar-secondary {
 		height: 123px;
-		margin-left: 157px; /* space for logo */
+		max-width: 980px;
+		margin: 0 auto !important;
 	}
 }
 
@@ -317,7 +318,10 @@ aside.search-facets {
 .search-facet .search-facet-items { padding-left: 0; }
 
 .search-facet-item { position: relative; }
-.search-facet-item > span { margin-left: 1.5em; }
+.search-facet-item > span {
+	display: block;
+	margin: 0 0 3px 1.5em;
+}
 .search-facet-item a::before {
 	position: absolute;
 	left: 0;
