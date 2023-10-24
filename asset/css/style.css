@@ -280,7 +280,7 @@ aside.search-facets {
   background-color: #eee;
 }
 
-.resource .metadata-set { margin-left: 16px; }
+.resource .metadata-set { margin-left: 216px; }
 
 .resource .metadata { margin-bottom: 10px; }
 
@@ -315,7 +315,14 @@ aside.search-facets {
 }
 
 .search-facet .search-facet-items { padding-left: 0; }
-.search-facet .search-facet-item a::before { font-weight: 900; }
+
+.search-facet-item { position: relative; }
+.search-facet-item > span { margin-left: 1.5em; }
+.search-facet-item a::before {
+	position: absolute;
+	left: 0;
+	font-weight: 900;
+}
 
 /*
  * Item show page
