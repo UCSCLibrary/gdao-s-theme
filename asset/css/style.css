@@ -32,6 +32,9 @@ a:hover {
     color: #ea4147;
     text-decoration: none;
 }
+a.btn-secondary:visited {
+	color: #fff;
+}
 
 /*
  * Logo
@@ -399,4 +402,42 @@ div.website-card {
   background-color: #f8f8f8;
   border: 1px solid #cbcbcb;
   padding: 20px 0;
+}
+
+/*
+ * Site Pages
+ *
+ */
+.page .col-3 h2,
+.page .col-4 h2,
+.page .col-6 h2 {
+	border: 1px solid #abacab !important;
+  padding: 6px;
+  text-align: center;
+  margin: 8px;
+  color: #444;
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 24px;
+}
+.page .artist {
+	border: 1px solid #abacab !important;
+	margin: 12px 8px;
+	padding: 12px;
+}
+.page .artist h3 {
+  display: block;
+  width: 310px;
+  margin: 0 auto 10px auto;
+	text-align: center;
+	font-size: 17px;
+  border-bottom: 1px solid #abacab;
+}
+.page .artist img {
+	display: block;
+  margin: 0 auto;
+  border: 3px solid #ddd;
+}
+.page .artist img:hover {
+  border-color: #aaa;
 }
