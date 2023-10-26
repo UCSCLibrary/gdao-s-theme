@@ -1,0 +1,56 @@
+<?php
+    $translate = $this->plugin('translate');
+    $this->headLink()->prependStylesheet($this->assetUrl('css/advanced-search.css', 'Omeka'));
+    $this->headScript()->appendFile($this->assetUrl('js/advanced-search.js', 'Omeka'));
+    $searchValue = '';
+    if ($filters = $this->params()->fromQuery("filters")) {
+        $searchValue = ($filters['queries'][0]['operator'] == "matches_pattern") ? "" : $filters['queries'][0]['term'];
+    }
+?>
+<div class="row mb-3">
+    <div class="col-4">
+        <form
+            action="/fan-art"
+            id="fan-art-search-form" class="mb-0 input-group col-4">
+            <input type="text" name="filters[queries][0][term]" class="form-control"
+                value="<?php echo $searchValue ?>"
+                placeholder="<?php echo $translate('Search Fan Art'); ?>">
+            <input type="hidden" name="filters[queries][0][field]" value="dcterms_title" />
+            <input type="hidden" name="filters[queries][0][operator]" value="contains_any_word" />
+            <input type="hidden" name="filters[match]" value="all" />
+            <button class="btn btn-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+    </div>
+</div>
+
+<div class="row text-center mb-3">
+<div id="alphalist">
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=A*">[A]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=B*">[B]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=C*">[C]</a>&nbsp;
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=D*">[D]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=E*">[E]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=F*">[F]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=G*">[G]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=H*">[H]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=I*">[I]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=J*">[J]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=K*">[K]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=L*">[L]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=M*">[M]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=N*">[N]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=O*">[O]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=P*">[P]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=Q*">[Q]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=R*">[R]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=S*">[S]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=T*">[T]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=U*">[U]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=V*">[V]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=W*">[W]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=X*">[X]</a>
+    <a href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=Y*">[Y]</a>
+    <A href="/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=Z*">[Z]</a>
+    <a href="fan-art?q=">[ALL]</a>
+</div>
+</div>
