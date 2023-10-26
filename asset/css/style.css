@@ -405,7 +405,7 @@ div.website-card {
 }
 
 /*
- * Site Pages + Artists
+ * Site Pages: Artists, Help
  *
  */
 .page .col-3 h2,
@@ -441,6 +441,13 @@ div.website-card {
 .page .artist img:hover {
   border-color: #aaa;
 }
+.page.help h3 {
+  padding: 14px 0px 7px 0px;
+  font-weight: normal;
+  color: #646464;
+  font-size: 17px;
+}
+.page.help ol.topics > li { margin-bottom: 20px; }
 
 /*
  * Fan Art
