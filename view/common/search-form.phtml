@@ -1,14 +1,12 @@
 <?php
 $translate = $this->plugin('translate');
-$searchValue = $this->params()->fromQuery("filters");
 $searchUrl = $this->escapeHtml($this->url('search-page-1', [], true));
 ?>
 
 <form
     action="<?php echo $searchUrl; ?>"
     id="search-form" class="mb-0 input-group">
-    <input type="text" name="filters[queries][0][term]" class="form-control"
-        value="<?php echo $searchValue ? $searchValue['queries'][0]['term'] : ''; ?>"
+    <input type="text" name="filters[queries][0][term]" class="form-control" value=""
         placeholder="<?php echo $translate('Search'); ?>">
     <input type="hidden" name="filters[queries][0][field]" value="keyword" />
     <input type="hidden" name="filters[queries][0][operator]" value="contains_any_word" />
