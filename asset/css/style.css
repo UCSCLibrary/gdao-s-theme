@@ -405,7 +405,7 @@ div.website-card {
 }
 
 /*
- * Site Pages
+ * Site Pages + Artists
  *
  */
 .page .col-3 h2,
@@ -440,4 +440,17 @@ div.website-card {
 }
 .page .artist img:hover {
   border-color: #aaa;
+}
+
+/*
+ * Fan Art
+ *
+ */
+
+.fan-art h4 {
+  color: white;
+  font-size: 1.2em;
+  line-height: 1.2em;
+  text-align: center;
+  width: 200px;
 }
