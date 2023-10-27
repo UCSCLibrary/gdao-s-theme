@@ -32,8 +32,14 @@ a:hover {
     color: #ea4147;
     text-decoration: none;
 }
+a.btn-secondary:link {
+	color: #fff;
+}
 a.btn-secondary:visited {
 	color: #fff;
+}
+a.btn-secondary:hover {
+	color: #25aae0;
 }
 
 /*
@@ -413,7 +419,7 @@ div.website-card {
 }
 
 /*
- * Site Pages: Artists, Help
+ * Site Pages: Artists, Media, Help
  *
  */
 .page .col-3 h2,
@@ -448,6 +454,12 @@ div.website-card {
 }
 .page .artist img:hover {
   border-color: #aaa;
+}
+body.selected-media #content .embed h3 {
+	font-size: 13px;
+}
+body.selected-media .embed {
+	margin-bottom: 20px;
 }
 .page #content h3 {
   padding: 14px 0px 7px 0px;
