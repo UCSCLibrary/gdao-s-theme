@@ -1,0 +1,39 @@
+<?php
+// Customized for GDAO.
+// We use this block on exhibit pages, but it tries to link the item back to the
+// resource within the exhibit site. We hardcode the link back to the item show page
+// in the main gdao site.
+?>
+<div class="item-showcase pull-left bg-light">
+  <?php foreach ($attachments as $attachment): ?>
+    <?php if ($item  = $attachment->item()):
+      echo '<div class="row m-1 mb-3 flex-row-reverse">';
+      if ($heading = $block->dataValue('heading')) {
+        echo '<div class="col-12"><h3>' . $heading . '</h3></div>';
+      } ?>
+      <div class="card-media col-3 text-center">
+        <?php
+        $media = $attachment->media() ?: $item->primaryMedia();
+        if ($media):
+            echo '<a href=/items/show/"' . $item->value('gdao:classicId') . '">';
+            echo $this->thumbnail($media, $this->thumbnailType);
+            echo '</a>';
+        endif;
+        $showTitleOption = $this->showTitleOption;
+        if ($showTitleOption == 'item_title') {
+          echo '<h5 class="card-text">' . $item->link($item->displayTitle()) . '</h5>';
+        }
+        elseif ($showTitleOption == 'file_name') {
+          echo '<p class="card-text">' . $media->displayTitle() . '</p>';
+        } ?>
+      </div>
+      <div class="card-body col-6">
+        <?php
+        if ($caption = $attachment->caption()) {
+          echo '<div class="caption">' . $caption . '</div>';
+        } ?>
+      </div>
+    <?php endif; ?>
+    </div>
+  <?php endforeach; ?>
+</div>

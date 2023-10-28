@@ -481,3 +481,11 @@ body.selected-media .embed {
   text-align: center;
   width: 200px;
 }
+
+/*
+ * Item Showcase blocks
+ *
+ */
+.item-showcase.pull-left {
+	text-align: left;
+}

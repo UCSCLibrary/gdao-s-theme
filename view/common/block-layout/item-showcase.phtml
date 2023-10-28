@@ -1,27 +1,42 @@
-<div class="row">
+<?php 
+// Customized for GDAO.
+// We use this block on exhibit pages, but it tries to link the item back to the 
+// resource within the exhibit site. We hardcode the link back to the item show page
+// in the main gdao site.
+?>
+<div class="row item-showcase">
   <?php foreach ($attachments as $attachment): ?>
-    <div class="col-6 col-md-3">
+    <div class="col-4">
       <div class="mb-3">
         <?php
         $item = $attachment->item();
         if ($item):
-          ?>
+          if ($heading = $block->dataValue('heading')) {
+            echo "<h3>" . $heading . "</h3>";
+          } ?>
+
           <!-- Card image -->
-          <div style="background-color : lightgrey; height : 150px;" class="text-center">
+          <div class="text-center bg-light">
             <?php
             $media = $attachment->media() ?: $item->primaryMedia();
             if ($media):
-                echo $item->linkRaw($this->thumbnail($media, $this->thumbnailType, ['style' => 'height : 150px; max-width : 100%;']));
+                echo '<a href=/items/show/"' . $item->value('gdao:classicId') . '">';
+                echo $this->thumbnail($media, $this->thumbnailType);
+                echo '</a>';
             endif;
-            ?>
-        </div>
+            $showTitleOption = $this->showTitleOption;
+            if ($showTitleOption == 'item_title') {
+              echo '<h5 class="card-text">' . $item->link($item->displayTitle()) . '</h5>';
+            }
+            elseif ($showTitleOption == 'file_name') {
+              echo '<p class="card-text">' . $media->displayTitle() . '</p>';
+            } ?>
+          </div>
           <div class="card-body">
-            <?php $showTitleOption = $this->showTitleOption; ?>
-            <?php if ($showTitleOption == 'item_title'): ?>
-              <h5 class="card-text"><?php echo $item->link($item->displayTitle()); ?></h5>
-            <?php elseif ($showTitleOption == 'file_name'): ?>
-              <p class="card-text"><?php echo $media->displayTitle(); ?></p>
-            <?php endif; ?>
+            <?php
+            if ($caption = $attachment->caption()) {
+              echo '<div class="caption">' . $caption . '</div>';
+            } ?>
           </div>
         </div>
 
