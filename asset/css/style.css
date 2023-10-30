@@ -149,7 +149,7 @@ footer a {
 	background-position: bottom;
 	background-repeat: repeat-x;
 	display: block;
-	padding: 12px 0 6px;
+	padding: 12px 0;
 }
 
 footer a:hover {
@@ -486,6 +486,7 @@ body.selected-media .embed {
  * Item Showcase blocks
  *
  */
-.item-showcase.pull-left {
-	text-align: left;
+.item-showcase.pull-left,
+.item-showcase.pull-right {
+	text-align: left;s
 }
