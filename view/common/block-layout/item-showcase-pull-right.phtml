@@ -4,7 +4,7 @@
 // resource within the exhibit site. We hardcode the link back to the item show page
 // in the main gdao site.
 ?>
-<div class="item-showcase pull-left bg-light">
+<div class="item-showcase pull-right bg-light">
   <?php foreach ($attachments as $attachment): ?>
     <?php if ($item  = $attachment->item()):
       echo '<div class="row m-1 mb-3 flex-row-reverse">';
@@ -15,7 +15,7 @@
         <?php
         $media = $attachment->media() ?: $item->primaryMedia();
         if ($media):
-            echo '<a href=/items/show/"' . $item->value('gdao:classicId') . '">';
+            echo '<a href=/items/show/' . $item->value('gdao:classicID') . '>';
             echo $this->thumbnail($media, $this->thumbnailType);
             echo '</a>';
         endif;
