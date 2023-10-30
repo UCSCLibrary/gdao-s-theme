@@ -20,7 +20,7 @@
             <?php
             $media = $attachment->media() ?: $item->primaryMedia();
             if ($media):
-                echo '<a href=/items/show/"' . $item->value('gdao:classicId') . '">';
+                echo '<a href="/items/show/' . $item->value('gdao:classicID') . '">';
                 echo $this->thumbnail($media, $this->thumbnailType);
                 echo '</a>';
             endif;
