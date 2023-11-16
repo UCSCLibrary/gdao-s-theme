@@ -490,3 +490,15 @@ body.selected-media .embed {
 .item-showcase.pull-right {
 	text-align: left;s
 }
+
+/*
+ * Copyright Owners page
+ *
+ */
+div.copyright-owner {
+  border-top: 1px solid #cbcbcb;
+  padding: 8px 0px;
+}
+div.copyright-owner.odd {
+  background-color: #f8f8f8;
+}
