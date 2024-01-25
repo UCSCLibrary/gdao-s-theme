@@ -502,11 +502,3 @@ div.copyright-owner {
 div.copyright-owner.odd {
   background-color: #f8f8f8;
 }
-
-/* Hide the HTML Purifier option
- * see: https://github.com/UCSCLibrary/gdao-s/issues/33
- */
-body.settings #use_htmlpurifier,
-body.settings label[for="use_htmlpurifier"] {
-  display: none;
-}
