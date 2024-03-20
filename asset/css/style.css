@@ -177,6 +177,7 @@ footer ul {
 body.homepage .blocks { display: flex; }
 body.homepage .blocks h2 { border: none !important; }
 body.homepage .item-showcase { border: none; }
+body.homepage #deadnews { text-align: center; }
 
 /*
  * Search Form
